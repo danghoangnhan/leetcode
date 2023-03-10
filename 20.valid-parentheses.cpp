@@ -2,7 +2,6 @@
 #include <stack>
 #include <map>
 using namespace std;
-
 /*
  * @lc app=leetcode id=20 lang=cpp
  *
@@ -22,16 +21,11 @@ public:
 
         for (int i = 0; i < s.size(); i++)
         {
-            if (converter.count(s.at(i)))
-            {
-                re.push(s.at(i));
-            }
+            if (converter.count(s.at(i))){re.push(s.at(i));}
             else
             {
-                if (re.empty())
-                    return false;
-                if (converter[re.top()] != s.at(i))
-                    return false;
+                if (re.empty())return false;
+                if (converter[re.top()] != s.at(i))return false;
                 re.pop();     
             }
         }
