@@ -1,6 +1,8 @@
 #include<string>
 #include<vector>
-#include<set>
+#include<unordered_set>
+#include<iostream>
+
 #define FOR(i, L, R) for(int i = L; i < (int)R; ++i)
 #define FORD(i, L, R) for(int i = L; i > (int)R; --i)
 using namespace std;
@@ -61,28 +63,34 @@ public:
 // @lc code=start
 class Solution {
 private:
-    bool visited[300] = {};
-    string s;
-    Trie* trie;
-    set<string> dict;
-    bool dfs(int i) {
-            if (i == size(s))return true;
-            if (!visited[i]) {
-                visited[i] = true;
-                for (int j = i; j < size(s); j++) {
-                    if (this->trie->search(s.substr(i,j+1)) && dfs(j+1))
-                        return true;
-                }
-            }
-            return false;
-        };
+    vector<bool> dp;
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        Trie* obj = new Trie();
-        this->s = s;
-        for (auto word:wordDict){obj->insert(word);}
-        dfs(0);        
-    }
+        Trie trie;
+        for(auto word:wordDict){
+            trie.insert(word);
+        }
+        unordered_set<string>dict(wordDict.begin(),wordDict.end());
+        this->dp = new vector<bool> dp(s.length()+1);
+        fill(dp.begin(), dp.end(), false);
+        for(int end=1;end<=s.length();end++){
+            for(int start = end-1 ; start>0;start--){
+                string prefix = s.substr(start,end);
+                if(trie.startsWith(prefix)|| (dp[start-1] && dict.count(prefix))){
+                    dp[end-1] = true;
+                    break;
+                }
+            }
+        }
+
+        return dp[s.length()-1];        
+    }       
 };
+int main(){
+    Solution solution;
+    vector<string> pattern = {"cats","dog","sand","and","cat"};
+    cout<< solution.wordBreak("catsandog",pattern) <<endl;
+    return 0;
+}
 // @lc code=end
 
