@@ -5,6 +5,7 @@
 
 #define FOR(i, L, R) for(int i = L; i < (int)R; ++i)
 #define FORD(i, L, R) for(int i = L; i > (int)R; --i)
+#define MAX 300
 using namespace std;
 /*
  * @lc app=leetcode id=139 lang=cpp
@@ -62,34 +63,50 @@ public:
 
 // @lc code=start
 class Solution {
-private:
-    vector<bool> dp;
 public:
+    vector<bool> dp;
+    Solution(){
+        for (int i = 0; i <=300; i++){
+            dp.push_back(false);
+        }
+    }
     bool wordBreak(string s, vector<string>& wordDict) {
         Trie trie;
         for(auto word:wordDict){
             trie.insert(word);
         }
         unordered_set<string>dict(wordDict.begin(),wordDict.end());
-        this->dp = new vector<bool> dp(s.length()+1);
-        fill(dp.begin(), dp.end(), false);
         for(int end=1;end<=s.length();end++){
-            for(int start = end-1 ; start>0;start--){
-                string prefix = s.substr(start,end);
-                if(trie.startsWith(prefix)|| (dp[start-1] && dict.count(prefix))){
-                    dp[end-1] = true;
-                    break;
+            for(int start = end-1 ; start>=0;start--){
+                string prefix = s.substr(start,end-start);
+                if (dict.count(prefix))
+                {
+                    if(start == 0||dp[start-1] ){
+                        this->dp[end-1] = true;
+                        cout << start  <<" "<< end <<endl;
+                        break;
+                    }
                 }
             }
         }
-
-        return dp[s.length()-1];        
+        return this->dp[(s.length()-1)];        
     }       
 };
 int main(){
     Solution solution;
-    vector<string> pattern = {"cats","dog","sand","and","cat"};
-    cout<< solution.wordBreak("catsandog",pattern) <<endl;
+    vector<string> pattern = {"apple","pen"};
+    string s = "applepenapple";
+    for (int i = 0; i <s.size() ; i++)
+    {
+        cout<<solution.dp[i];
+    }
+    cout<<endl;
+    cout<< solution.wordBreak(s,pattern) <<endl;
+    for (int i = 0; i <s.size() ; i++)
+    {
+        cout<<solution.dp[i];
+    }
+    
     return 0;
 }
 // @lc code=end
