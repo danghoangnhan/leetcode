@@ -92,22 +92,5 @@ public:
         return this->dp[(s.length()-1)];        
     }       
 };
-int main(){
-    Solution solution;
-    vector<string> pattern = {"apple","pen"};
-    string s = "applepenapple";
-    for (int i = 0; i <s.size() ; i++)
-    {
-        cout<<solution.dp[i];
-    }
-    cout<<endl;
-    cout<< solution.wordBreak(s,pattern) <<endl;
-    for (int i = 0; i <s.size() ; i++)
-    {
-        cout<<solution.dp[i];
-    }
-    
-    return 0;
-}
 // @lc code=end
 
