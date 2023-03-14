@@ -78,7 +78,7 @@ private:
         };
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        Trie* obj = new Trie();
+        this->trie = new Trie();
         this->s = s;
         for (auto word:wordDict){obj->insert(word);}
         dfs(0);        
