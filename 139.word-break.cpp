@@ -75,15 +75,18 @@ public:
         for(auto word:wordDict)trie.insert(word);
         unordered_set<string>dict(wordDict.begin(),wordDict.end());
         for(int end=1;end<=s.length();end++){
-            for(int start = end-1 ; start>0;start--){
-                string prefix = s.substr(start,end);
-                if(trie.startsWith(prefix)|| (dp[start-1] && dict.count(prefix))){
-                    dp[end-1] = true;
-                    break;
+            for(int start = end-1 ; start>=0;start--){
+                string prefix = s.substr(start,end-start);
+                if(dict.count(prefix)){
+                    if (start==0 || dp[start-1])
+                    {
+                        dp[end-1] = true;
+                        break;
+                    }
+                    
                 }
             }
         }
-
         return dp[s.length()-1];        
     }       
 };
