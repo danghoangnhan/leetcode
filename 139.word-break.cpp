@@ -62,22 +62,18 @@ public:
 
 // @lc code=start
 class Solution {
-private:
-    vector<bool> dp;
 public:
+    vector<bool>* dp;
     bool wordBreak(string s, vector<string>& wordDict) {
         Trie trie;
-        for(auto word:wordDict){
-            trie.insert(word);
-        }
+        for(auto word:wordDict)trie.insert(word);
         unordered_set<string>dict(wordDict.begin(),wordDict.end());
-        this->dp = new vector<bool> dp(s.length()+1);
-        fill(dp.begin(), dp.end(), false);
+        this->dp = new vector<bool>(s.length(),false);
         for(int end=1;end<=s.length();end++){
             for(int start = end-1 ; start>0;start--){
                 string prefix = s.substr(start,end);
-                if(trie.startsWith(prefix)|| (dp[start-1] && dict.count(prefix))){
-                    dp[end-1] = true;
+                if(trie.startsWith(prefix)|| (this->dp[start-1] ==false && dict.count(prefix))){
+                    this->dp[end-1] = true;
                     break;
                 }
             }
@@ -90,6 +86,11 @@ int main(){
     Solution solution;
     vector<string> pattern = {"cats","dog","sand","and","cat"};
     cout<< solution.wordBreak("catsandog",pattern) <<endl;
+    for (int i = 0; i < solution.dp.size(); i++)
+    {
+        cout << solution.dp[i];
+    }
+    cout<<endl;
     return 0;
 }
 // @lc code=end
