@@ -10,19 +10,14 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int rob(vector<int>& nums) {
-        for (int i = 2; i < nums.size(); i++){
-            int previous= INT_MIN;
-            for (int j = 0; j <i -1; j++){
-                previous = max(previous,nums[j]);
+        int rob(vector<int>& nums) {
+            int currentRob =0, previousRob =0;
+            for (int num:nums){
+                int newRob = max(previousRob+num,currentRob);
+                previousRob = currentRob;
+                currentRob = newRob;
             }
-            nums[i]=nums[i]+previous;
-        }
-        int result = nums[0];
-        for(int i =1 ;i<nums.size();i++){
-            result = max(result,nums[i]);
-        }
-        return result;
+            return currentRob;
     }
 };
 // @lc code=end
