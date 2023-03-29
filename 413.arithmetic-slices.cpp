@@ -22,20 +22,17 @@ public:
         int start =0;
         int result =0;
         for (int i = 2; i < nums.size(); i++){
-            bool compare = nums[i]-nums[i-1]==nums[start+1]-nums[start]; 
-            if (compare){
+            if (nums[i]-nums[i-1]==nums[start+1]-nums[start]){
                 check = true;
             }
             else{
                 if (check){
-                    cout<<start<<" "<<i<<endl;
-                    result +=caculates(i-start+1);
+                    result +=caculates(i-start);
                     check = false;
                 }
-                start = i;
+                start = i-1;
             }
             if (i==nums.size()-1){
-                cout<<start<<" "<<i<<endl;
                 result +=caculates(i-start+1);
             }
         }
