@@ -10,14 +10,6 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    void display(vector<vector<int>>& matrix){
-        for (int i = 0; i < matrix.size(); i++){
-            for (int j = 0; j < matrix[i].size(); j++){
-                cout<<matrix[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-    }
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         if (obstacleGrid[obstacleGrid.size()-1][obstacleGrid[0].size()-1]){
             return 0;
@@ -46,7 +38,6 @@ public:
         }
         for (int i = 1; i < obstacleGrid.size(); i++){
             for (int j = 1; j < obstacleGrid[i].size(); j++){
-                // cout<<obstacleGrid[i][0]<<" "<<obstacleGrid[i-1][j]<<" "<<obstacleGrid[i][j-1]<<endl;
                 if(obstacleGrid[i][j]){
                     ways[i][j] =0;
                     continue;
@@ -59,7 +50,6 @@ public:
                 }
             }
         }
-        // display(ways);
         return ways[ways.size()-1][ways[0].size()-1]; 
     }
 };

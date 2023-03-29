@@ -8,7 +8,7 @@
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-               vector<vector<int>> ways(m,vector<int>(n));
+        vector<vector<int>> ways(m,vector<int>(n));
 
         for (int i = 0; i < m; i++){
             ways[i][0] =1;
