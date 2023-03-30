@@ -10,13 +10,15 @@ using namespace std;
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        vector<int>findMaxMul(nums.size(),0);
-        vector<int>mulRange(nums.size(),0);
-        result[0] = nums[0];
-        mulRange[0] =nums[0];
-    for(int i =0;i<nums.size()i++){
-
-    }
+        for (int i = 1; i < nums.size(); i++){
+            nums[i] = max(nums[i],nums[i-1]*nums[i]);
+        }
+        int result = nums[0];
+        for (int i = 1; i < nums.size(); i++)
+        {
+            result = max(nums[i],result);
+        }
+        return result;
     }
 };
 // @lc code=end
