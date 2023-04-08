@@ -1,5 +1,3 @@
-#include <vector>
-using namespace std;
 /*
  * @lc app=leetcode id=118 lang=cpp
  *
@@ -9,7 +7,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> generate(int numRows) {
         vector<vector<int>>result;
         for (int  i = 1; i <= numRows; i++){
             result.push_back(vector<int>(i,0));

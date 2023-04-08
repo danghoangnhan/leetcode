@@ -16,8 +16,7 @@ public:
         map<int, int> maps;
         vector<int> result;
         for (int index = 0; index < nums.size(); index++){
-            if (maps.count(nums[index]))
-            {
+            if (maps.count(nums[index])){
                 result.push_back(maps[nums[index]]);
                 result.push_back(index);
                 break;

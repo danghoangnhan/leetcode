@@ -18,7 +18,11 @@ public:
                 result = max(nums[j]*mul,result);
                 mul *= nums[j];
             }
+            }
+            result = max(mul,result);
         }
+        
+
         return result;
     }
 };
