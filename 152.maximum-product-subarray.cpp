@@ -10,13 +10,14 @@ using namespace std;
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        for (int i = 1; i < nums.size(); i++){
-            nums[i] = max(nums[i],nums[i-1]*nums[i]);
-        }
+        
         int result = nums[0];
-        for (int i = 1; i < nums.size(); i++)
-        {
-            result = max(nums[i],result);
+        for (int i = 1; i < nums.size(); i++){
+            int mul = nums[0];
+            for (int j = 0; j < i; j++){
+                result = max(nums[j]*mul,result);
+                mul *= nums[j];
+            }
         }
         return result;
     }
