@@ -19,16 +19,20 @@ class Solution {
 public:
     
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (root->left==q||root->left==p)
-        {
-
+        TreeNode* currentNode = root;
+        while (currentNode!=nullptr){
+            if (p->val>currentNode->val && q->val>currentNode->val){
+                currentNode = currentNode->right;
+            }
+            else if (p->val<currentNode->val && q->val<currentNode->val){
+                currentNode = currentNode->left;
+            }
+            else{
+                break;
+            }
+                
         }
-        if (root->l)
-        {
-            /* code */
-        }
-        
-        
+        return currentNode;    
     }
 };
 // @lc code=end
