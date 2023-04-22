@@ -31,7 +31,7 @@ public:
                 }
                 columnCheck[j].emplace(board[i][j]);
                 rowCheck[i].emplace(board[i][j]);   
-                squareCheck[i/3][j/3].count(board[i][j]);
+                squareCheck[i/3][j/3].emplace(board[i][j]);
             }
         return true;
     }
