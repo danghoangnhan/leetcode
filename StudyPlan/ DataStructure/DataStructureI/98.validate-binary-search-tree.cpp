@@ -1,3 +1,5 @@
+#include <limits>
+using  namespace std;
 /*
  * @lc app=leetcode id=98 lang=cpp
  *
@@ -18,14 +20,15 @@
  */
 class Solution {
 public:
-    bool solve(TreeNode* current,TreeNode*parent) {
-        if (current==NULL)return true;
-        if(!solve(current->left,parent)) return false;        
-        if (parent!=NULL && parent->val <= current->val) return false;
-        return  solve(current->right,current);
+    bool solve(TreeNode* current,long long int left,long long int right) {
+        if (current==nullptr)return true;
+
+        if(!(current->val<right && current->val>left)) return false;        
+        return      solve(current->left,left,current->val) 
+                &&  solve(current->right,current->val,right);
     }
     bool isValidBST(TreeNode* root) {
-        return  solve(root,NULL);
+        return  solve(root,LLONG_MIN,LLONG_MAX);
     }
 };
 // @lc code=end
