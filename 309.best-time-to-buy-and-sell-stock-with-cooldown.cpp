@@ -36,7 +36,6 @@ public:
     };
     int maxProfit(vector<int>& prices) {
         this->prices = prices;
-
     }
 };
 // @lc code=end
