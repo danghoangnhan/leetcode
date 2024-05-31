@@ -3,7 +3,8 @@
  *
  * [347] Top K Frequent Elements
  */
-
+#include <bits/stdc++.h>
+using namespace std;
 // @lc code=start
 class Solution {
 public:
