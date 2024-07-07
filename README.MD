@@ -4,4 +4,5 @@ This repository contains my solutions to various problems from LeetCode.
 
 # Reference
 
-https://github.com/labuladong/fucking-algorithm
+https://neetcode.io/
+https://labuladong.online/
