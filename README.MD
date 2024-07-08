@@ -1,4 +1,4 @@
-# LeetCode Solutions Repository by Daniel Du
+# LeetCode Solutions
 
 Welcome to my LeetCode solutions repository, where I tackle various algorithmic problems to sharpen my coding skills and problem-solving abilities.
 
