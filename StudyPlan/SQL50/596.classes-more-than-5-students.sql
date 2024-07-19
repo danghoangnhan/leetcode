@@ -6,6 +6,10 @@
 
 -- @lc code=start
 # Write your MySQL query statement below
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(student) > 3;
 
 -- @lc code=end
 
