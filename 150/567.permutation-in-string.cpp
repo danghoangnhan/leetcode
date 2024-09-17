@@ -15,13 +15,14 @@ public:
         int maxCount = 0;
         int start = 0;
         int maxLength = 0;
-        
-        for (int end = 0; end < s.length(); end++) {
-            count[s[end] - 'A']++;
-            maxCount = max(maxCount, count[s[end] - 'A']);
+        for(auto& chacracter:s1){
+            count[chacracter-'a']++;
+        }
+        for (int end = 0; end < s2.length(); end++) {
+            maxCount = max(maxCount, count[s2[end] - 'a']);
             
             if (end - start + 1 - maxCount > k) {
-                count[s[start] - 'A']--;
+                count[s2[start] - 'a']--;
                 start++;
             }
             
