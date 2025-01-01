@@ -13,8 +13,8 @@ public:
     vector<int> plusOne(vector<int>& digits) {
         int carry = 1;
         int index = digits.size()-1;
-        while(index>=0 && subber>0){
-            digits[index]   +=  subber;
+        while(index>=0 && carry>0){
+            digits[index]   +=  carry;
             carry = digits[index]/10;
             digits[index] = digits[index]%10;
             index--;
