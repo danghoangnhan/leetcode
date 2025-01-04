@@ -19,21 +19,21 @@ public:
                 continue;
             }
             
-            int j = i + 1;
-            int k = nums.size() - 1;
+            int left = i + 1;
+            int right = nums.size() - 1;
 
-            while (j < k) {
-                int total = nums[i] + nums[j] + nums[k];
+            while (left < right) {
+                int total = nums[i] + nums[left] + nums[right];
 
                 if (total > 0) {
-                    k--;
+                    left--;
                 } else if (total < 0) {
-                    j++;
+                    right++;
                 } else {
-                    res.push_back({nums[i], nums[j], nums[k]});
-                    j++;
-                    while (nums[j] == nums[j-1] && j < k) {
-                        j++;
+                    res.push_back({nums[i], nums[left], nums[right]});
+                    left++;
+                    while (nums[left] == nums[left-1] && left < right) {
+                        left++;
                     }
                 }
             }
