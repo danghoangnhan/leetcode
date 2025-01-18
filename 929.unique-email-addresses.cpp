@@ -14,7 +14,6 @@ public:
         set<string> check_list;
         for(auto& email:emails){
             vector<string> names = split(email,'@');
-
         }
         return check_list.size();
     }
