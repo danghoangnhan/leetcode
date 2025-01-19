@@ -9,21 +9,25 @@ using namespace std;
  */
 
 // @lc code=start
+#include "bits/stdc++.h"
+using namespace std;
+
 class Solution {
 public:
-    map<char, char> converter = {
+    unordered_map<char, char> converter = {
         {'{', '}'},
         {'[', ']'},
         {'(', ')'}
     };
     bool isValid(string s) {
         stack<char> re;
-
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (converter.count(s.at(i))){re.push(s.at(i));}
-            else
-            {
+        int n = s.size();
+        for (int i = 0; i < n; i++){
+            if (converter.count(s.at(i))){
+                re.push(s.at(i));
+                continue;
+            }
+            else{
                 if (re.empty())return false;
                 if (converter[re.top()] != s.at(i))return false;
                 re.pop();     
