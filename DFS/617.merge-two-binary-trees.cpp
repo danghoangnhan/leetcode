@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=653 lang=cpp
+ * @lc app=leetcode id=617 lang=cpp
  *
- * [653] Two Sum IV - Input is a BST
+ * [617] Merge Two Binary Trees
  */
 
 // @lc code=start
@@ -18,17 +18,17 @@
  */
 #include "bits/stdc++.h"
 using namespace std;
+
 class Solution {
 public:
-    map<int, int> maps;
-    bool findTarget(TreeNode* root, int k) {
-        if(root==nullptr) return false;
-        if (this->maps.count(root->val)){return true;}
-        this->maps[k - root->val] = root->val;
-        bool foundLeft = findTarget(root->left,k);
-        if (foundLeft) return foundLeft;
-        bool foundRight = findTarget(root->right,k);
-        return foundRight;
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        if(!root1){ return root2;}
+        if(!root2){ return root1;}
+        return  new TreeNode(
+            root1->val+root2->val,
+            mergeTrees(root1->left,root2->left),
+            mergeTrees(root1->right,root2->right)
+        );
     }
 };
 // @lc code=end

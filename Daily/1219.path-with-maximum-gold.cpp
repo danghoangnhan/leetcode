@@ -45,12 +45,11 @@ public:
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (grid[i][j] > 0) {  // Only start DFS if the cell has gold
+                if (grid[i][j] > 0) {
                     dfs(i, j, 0);
                 }
             }
         }
-
         return maxGold;
     }
 };
