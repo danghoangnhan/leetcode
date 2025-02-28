@@ -1,5 +1,3 @@
-#include<string>
-using namespace std;
 /*
  * @lc app=leetcode id=1143 lang=cpp
  *
@@ -7,21 +5,25 @@ using namespace std;
  */
 
 // @lc code=start
+#include "bits/stdc++.h"
+using namespace std;
+int dp[1002][1002];
+
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+        
+        int dp[1002][1002] = {};
 
-    int length[text1.size()+1][text2.size()+1];
-	for (int i=0; i<=text1.size(); i++) length[i][0] = 0;
-	for (int j=0; j<=text2.size(); j++) length[0][j] = 0;
-
-	for (int i=1; i<=text1.size(); i++)
-		for (int j=1; j<=text2.size(); j++)
-			if (text1[i-1] == text2[j-1])
-				length[i][j] = length[i-1][j-1] + 1;
-			else
-				length[i][j] = max(length[i-1][j],length[i][j-1]);
-	return length[text1.size()][text2.size()];
+        for (int i=1; i<=n; i++)
+            for (int j=1; j<=m; j++)
+                if (text1[i-1] == text2[j-1])
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                else
+                    dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+        return dp[n][m];        
     }
 };
 // @lc code=end
