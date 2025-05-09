@@ -6,6 +6,13 @@
 
 -- @lc code=start
 # Write your MySQL query statement below
-select name as Customers from Customers where Customers.id not in (select customerId from Orders)
+SELECT 
+    name AS Customers 
+FROM 
+    Customers 
+WHERE 
+    Customers.id NOT IN (
+        SELECT customerId FROM Orders
+    )
 -- @lc code=end
 
